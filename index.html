@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Q-Tech AI-Solutions | Intelligent Automation Agency</title>
+  <meta name="description"
+    content="Q-Tech AI-Solutions — We build intelligent AI-powered systems, automation pipelines, and custom software that push businesses into the future." />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,700;0,900;1,900&family=Inter:wght@300;400;500;600&display=swap"
+    rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body class="loading-locked">
+  <!-- ═══════════════════════════════════════════════
+       GLOBAL PRELOADER
+  ════════════════════════════════════════════════ -->
+  <div id="global-loader" aria-hidden="true">
+    <div class="loader-content">
+      <div class="loader-pulse"></div>
+      <span class="loader-text">INITIALIZING AI SYSTEMS...</span>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════
+       NAVIGATION
+  ════════════════════════════════════════════════ -->
+  <nav class="nav" id="main-nav" aria-label="Main navigation">
+    <div class="nav__brand">
+      <span class="nav__logo-mark">◆</span>
+      <span class="nav__brand-name">Q-TECH</span>
+    </div>
+
+    <ul class="nav__links" role="list">
+      <li><a href="#hero"         class="nav__link" id="nav-home">Home</a></li>
+      <li><a href="#testimonials" class="nav__link" id="nav-testimonials">Testimonials</a></li>
+      <li><a href="#contact"      class="nav__link" id="nav-contact">Contact</a></li>
+    </ul>
+
+    <a href="#contact" class="nav__cta" id="nav-hire-btn">
+      Get Started
+    </a>
+  </nav>
+
+  <!-- ═══════════════════════════════════════════════
+       HERO SECTION
+       ┌─────────────────────────────────────────┐
+       │  SPLINE 3D SLOT — canvas goes here      │
+       │  To activate: uncomment #spline-bg      │
+       └─────────────────────────────────────────┘
+  ════════════════════════════════════════════════ -->
+  <section class="hero" id="hero" aria-label="Hero section">
+
+    <!-- ══ SPLINE 3D BACKGROUND ══════════════════════════════ -->
+    <canvas id="spline-bg" aria-hidden="true"></canvas>
+
+    <!-- Noise / grain overlay for texture depth -->
+    <div class="hero__grain" aria-hidden="true"></div>
+
+    <!-- Ambient glow blobs (replace with Spline when ready) -->
+    <div class="hero__glow hero__glow--1" aria-hidden="true"></div>
+    <div class="hero__glow hero__glow--2" aria-hidden="true"></div>
+
+    <!-- ── Hero content ── -->
+    <div class="hero__wrap">
+
+      <!-- Top-left descriptor -->
+      <p class="hero__descriptor" id="hero-descriptor">
+        // WE ARE Q-TECH — AN AI-DRIVEN FREELANCE AGENCY<br>
+        BUILDING INTELLIGENT SYSTEMS &amp; SCALABLE DIGITAL PRODUCTS.
+      </p>
+
+      <!-- Oversized headline -->
+      <h1 class="hero__headline" id="hero-headline">
+        <span class="hero__line hero__line--1">THE AI</span>
+        <span class="hero__line hero__line--bg-text" aria-hidden="true" style="z-index: -1;">FUTURE</span>
+        <span class="hero__line hero__line--2">ADVANTAGE</span>
+      </h1>
+
+      <!-- Right-side sub-tagline -->
+      <div class="hero__sub" id="hero-sub">
+        <p class="hero__sub-text">
+          // AUTOMATION<br>
+          &nbsp;&nbsp;&nbsp;THAT DELIVERS
+        </p>
+      </div>
+
+    </div><!-- /.hero__wrap -->
+
+    <!-- Bottom trusted section -->
+    <div class="hero__trusted" id="hero-trusted" aria-label="Social proof">
+      <p class="hero__trusted-label">Trusted by forward-thinking teams</p>
+
+      <!-- Placeholder logos — swap for real SVG or image logos when ready -->
+      <div class="hero__logos" aria-label="Client logos">
+
+        <div class="logo-pill" id="logo-1">
+          <div class="logo-pill__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg>
+          </div>
+          <span class="logo-pill__name">NexaCore</span>
+        </div>
+
+        <div class="logo-pill" id="logo-2">
+          <div class="logo-pill__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none"><polygon points="12 2 2 22 22 22"></polygon></svg>
+          </div>
+          <span class="logo-pill__name">Axiom Labs</span>
+        </div>
+
+        <div class="logo-pill" id="logo-3">
+          <div class="logo-pill__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+          </div>
+          <span class="logo-pill__name">Prism AI</span>
+        </div>
+
+        <div class="logo-pill" id="logo-4">
+          <div class="logo-pill__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+          </div>
+          <span class="logo-pill__name">VortexTech</span>
+        </div>
+
+        <div class="logo-pill" id="logo-5">
+          <div class="logo-pill__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path><path d="M2 12h20"></path></svg>
+          </div>
+          <span class="logo-pill__name">Orbis Digital</span>
+        </div>
+
+      </div><!-- /.hero__logos -->
+    </div><!-- /#hero-trusted -->
+
+  </section><!-- /#hero -->
+
+  <!-- ═══════════════════════════════════════════════
+       SERVICES TEASER (below fold)
+  ════════════════════════════════════════════════ -->
+  <section class="services" id="services" aria-label="Services">
+    <div class="services__header">
+      <span class="services__pre-label">// WHAT WE BUILD</span>
+      <h2 class="services__title">INTELLIGENT<br>SOLUTIONS</h2>
+    </div>
+
+    <div class="services__grid" role="list">
+
+      <article class="service-card" id="service-ai" role="listitem">
+        <span class="service-card__number">01</span>
+        <h3 class="service-card__title">AI &amp; Machine<br>Learning</h3>
+        <p class="service-card__desc">Custom models, NLP pipelines, computer vision systems — trained and deployed for
+          your exact business context.</p>
+        <span class="service-card__arrow" aria-hidden="true">↗</span>
+      </article>
+
+      <article class="service-card" id="service-automation" role="listitem">
+        <span class="service-card__number">02</span>
+        <h3 class="service-card__title">Workflow<br>Automation</h3>
+        <p class="service-card__desc">Eliminate repetitive operations. We wire AI agents and automation scripts into
+          your existing stack to multiply output.</p>
+        <span class="service-card__arrow" aria-hidden="true">↗</span>
+      </article>
+
+      <article class="service-card" id="service-software" role="listitem">
+        <span class="service-card__number">03</span>
+        <h3 class="service-card__title">Custom Software<br>Development</h3>
+        <p class="service-card__desc">Full-stack web apps, APIs, and dashboards engineered to scale — from MVP to
+          enterprise-grade architecture.</p>
+        <span class="service-card__arrow" aria-hidden="true">↗</span>
+      </article>
+
+      <article class="service-card" id="service-data" role="listitem">
+        <span class="service-card__number">04</span>
+        <h3 class="service-card__title">Data &amp;<br>Analytics</h3>
+        <p class="service-card__desc">Turn raw data into strategic intelligence. We build pipelines, warehouses, and
+          dashboards that drive decisions.</p>
+        <span class="service-card__arrow" aria-hidden="true">↗</span>
+      </article>
+
+    </div><!-- /.services__grid -->
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       ABOUT / WHY US
+  ════════════════════════════════════════════════ -->
+  <section class="about reveal" id="about" aria-label="About Q-Tech">
+    <div class="about__container">
+      <div class="about__visual">
+        <!-- We'll add a subtle CSS grid/glow mesh here in CSS -->
+        <div class="about__mesh" aria-hidden="true"></div>
+      </div>
+      
+      <div class="about__content">
+        <span class="section-label">// THE Q-TECH ADVANTAGE</span>
+        <h2 class="section-title">ENGINEERED FOR<br>THE NEXT ERA</h2>
+        <p class="section-desc">
+          We don't just prompt APIs. We architect custom neural networks, build resilient data pipelines, and deploy sovereign software that gives your business an unfair advantage. 
+        </p>
+        <p class="section-desc">
+          As an elite freelance agency, we integrate directly into your workflow, cutting overhead while delivering enterprise-grade AI tooling at startup speed.
+        </p>
+        
+        <ul class="about__list" role="list">
+          <li><strong>01.</strong> Custom AI Models — Fine-tuned natively for your proprietary datasets.</li>
+          <li><strong>02.</strong> System Agnostic — Seamless integrations with your existing tech stack.</li>
+          <li><strong>03.</strong> Extreme Velocity — Rapid prototyping to production in weeks, not months.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       TECH STACK MARQUEE
+  ════════════════════════════════════════════════ -->
+  <section class="marquee" aria-label="Technology Stack" aria-hidden="true">
+    <div class="marquee__track">
+      <!-- Group 1 -->
+      <div class="marquee__group">
+        <span>Python</span><span class="marquee__dot">✦</span>
+        <span>TensorFlow</span><span class="marquee__dot">✦</span>
+        <span>PyTorch</span><span class="marquee__dot">✦</span>
+        <span>OpenAI</span><span class="marquee__dot">✦</span>
+        <span>Next.js</span><span class="marquee__dot">✦</span>
+        <span>AWS</span><span class="marquee__dot">✦</span>
+        <span>PostgreSQL</span><span class="marquee__dot">✦</span>
+        <span>CUDA</span><span class="marquee__dot">✦</span>
+      </div>
+      <!-- Group 2 (Duplicate for seamless loop) -->
+      <div class="marquee__group">
+        <span>Python</span><span class="marquee__dot">✦</span>
+        <span>TensorFlow</span><span class="marquee__dot">✦</span>
+        <span>PyTorch</span><span class="marquee__dot">✦</span>
+        <span>OpenAI</span><span class="marquee__dot">✦</span>
+        <span>Next.js</span><span class="marquee__dot">✦</span>
+        <span>AWS</span><span class="marquee__dot">✦</span>
+        <span>PostgreSQL</span><span class="marquee__dot">✦</span>
+        <span>CUDA</span><span class="marquee__dot">✦</span>
+      </div>
+      <!-- Group 3 (Duplicate for ultrawide screens) -->
+      <div class="marquee__group">
+        <span>Python</span><span class="marquee__dot">✦</span>
+        <span>TensorFlow</span><span class="marquee__dot">✦</span>
+        <span>PyTorch</span><span class="marquee__dot">✦</span>
+        <span>OpenAI</span><span class="marquee__dot">✦</span>
+        <span>Next.js</span><span class="marquee__dot">✦</span>
+        <span>AWS</span><span class="marquee__dot">✦</span>
+        <span>PostgreSQL</span><span class="marquee__dot">✦</span>
+        <span>CUDA</span><span class="marquee__dot">✦</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       TESTIMONIALS
+  ════════════════════════════════════════════════ -->
+  <section class="testimonials" id="testimonials" aria-label="Client Testimonials">
+    <div class="testimonials__header reveal">
+      <span class="section-label">// PROVEN IMPACT</span>
+      <h2 class="section-title">CLIENT INTELLIGENCE</h2>
+    </div>
+
+    <div class="testimonials__grid" role="list">
+      
+      <article class="testimonial-card reveal" role="listitem">
+        <div class="testimonial-card__quote">
+          "Q-Tech completely overhauled our logistics routing. Their custom ML model cut our fleet delivery times by 22% in the first quarter alone. Absolutely crucial partnership."
+        </div>
+        <div class="testimonial-card__author">
+          <div class="testimonial-card__avatar" aria-hidden="true">E</div>
+          <div>
+            <div class="testimonial-card__name">Elena Rostova</div>
+            <div class="testimonial-card__role">CTO, NexaCore Logistics</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="testimonial-card reveal" role="listitem" style="transition-delay: 0.1s;">
+        <div class="testimonial-card__quote">
+          "The speed of execution is unmatched. We needed a proprietary NLP scraper built from scratch to analyze financial documents. Delivered, deployed, and scaling perfectly."
+        </div>
+        <div class="testimonial-card__author">
+          <div class="testimonial-card__avatar" aria-hidden="true">M</div>
+          <div>
+            <div class="testimonial-card__name">Marcus Sterling</div>
+            <div class="testimonial-card__role">Director of Data, Axiom Finance</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="testimonial-card reveal" role="listitem" style="transition-delay: 0.2s;">
+        <div class="testimonial-card__quote">
+          "It feels less like hiring an agency and more like plugging an elite engineering task force directly into our startup. Our AI infrastructure is lightyears ahead."
+        </div>
+        <div class="testimonial-card__author">
+          <div class="testimonial-card__avatar" aria-hidden="true">S</div>
+          <div>
+            <div class="testimonial-card__name">Sarah Jennings</div>
+            <div class="testimonial-card__role">Founder, Prism Vision</div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       CONTACT / CTA
+  ════════════════════════════════════════════════ -->
+  <section class="contact" id="contact" aria-label="Contact Section">
+    <!-- Atmospheric deep glow -->
+    <div class="contact__glow" aria-hidden="true"></div>
+    
+    <div class="contact__grid reveal">
+      
+      <div class="contact__info">
+        <span class="section-label" style="text-align: left;">// INITIATE SEQUENCE</span>
+        <h2 class="contact__title" style="text-align: left; font-size: clamp(2.5rem, 4vw, 4rem);">READY TO BUILD<br>THE FUTURE?</h2>
+        <p class="contact__desc" style="text-align: left;">
+          Stop relying on off-the-shelf tools. Let's engineer a bespoke AI solution that scales your operations exponentially.
+        </p>
+        
+        <div class="contact__direct">
+          <p class="contact__direct-label">Direct Line</p>
+          <a href="mailto:sahil.dev.me@gmail.com" class="contact__direct-email">sahil.dev.me@gmail.com</a>
+        </div>
+      </div>
+
+      <div class="contact__form-wrapper">
+        <form action="https://formspree.io/f/xlgwvrlq" method="POST" class="contact__form">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required placeholder="John Doe">
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required placeholder="john@company.com">
+          </div>
+          <div class="form-group">
+            <label for="message">Project Details</label>
+            <textarea id="message" name="message" rows="4" required placeholder="Tell us about the problem you're trying to solve..."></textarea>
+          </div>
+          <button type="submit" class="btn-primary" style="width: 100%;">Submit Inquiry</button>
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       FOOTER
+  ════════════════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <span class="nav__logo-mark">◆</span>
+        <span class="nav__brand-name">Q-TECH</span>
+        <p class="footer__tagline">Intelligent Automation Agency</p>
+      </div>
+      
+      <div class="footer__links">
+        <div class="footer__col">
+          <h4 class="footer__col-title">Navigation</h4>
+          <ul>
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#about">The Advantage</a></li>
+            <li><a href="#testimonials">Clients</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__col-title">Social</h4>
+          <ul>
+            <li><a href="#" target="_blank" rel="noopener noreferrer">Twitter / X</a></li>
+            <li><a href="#" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+            <li><a href="#" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer__bottom">
+      <p>&copy; <script>document.write(new Date().getFullYear())</script> Q-Tech AI-Solutions. All sovereign rights reserved.</p>
+      <div class="footer__legal">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ═══════════════════════════════════════════════
+       SPLINE RUNTIME  — uncomment when scene is ready
+       Replace YOUR_SCENE_ID with your published URL
+  ════════════════════════════════════════════════ -->
+  <!--
+  <script type="module">
+    import { Application } from 'https://unpkg.com/@splinetool/runtime@1.9.28/build/runtime.module.js';
+
+    const canvas  = document.getElementById('spline-bg');
+    const spline  = new Application(canvas);
+
+    await spline.load('https://prod.spline.design/YOUR_SCENE_ID/scene.splinecode');
+
+    // Keep canvas sharp on window resize
+    window.addEventListener('resize', () => {
+      spline.setSize(canvas.clientWidth, canvas.clientHeight);
+    });
+
+    // Pause GPU rendering when tab is hidden
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        spline.setSize(0, 0);
+      } else {
+        spline.setSize(canvas.clientWidth, canvas.clientHeight);
+      }
+    });
+  </script>
+  -->
+
+  <script src="main.js"></script>
+</body>
+
+</html>
