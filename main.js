@@ -5,6 +5,42 @@
 
 'use strict';
 
+function hideGlobalLoader() {
+  const loader = document.getElementById('global-loader');
+  if (loader) {
+    loader.classList.add('hidden');
+    document.body.classList.remove('loading-locked');
+    setTimeout(() => loader.remove(), 800);
+  }
+}
+
+/* ─── Mobile menu toggle ─────────────────────────────────────── */
+(function initMobileMenu() {
+  const menuToggle = document.getElementById('nav-menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  if (!menuToggle || !mobileMenu) return;
+
+  const closeMenu = () => {
+    document.body.classList.remove('menu-open');
+    menuToggle.setAttribute('aria-expanded', 'false');
+    mobileMenu.setAttribute('aria-hidden', 'true');
+  };
+
+  menuToggle.addEventListener('click', () => {
+    const isOpen = document.body.classList.toggle('menu-open');
+    menuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    mobileMenu.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+  });
+
+  mobileMenu.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', closeMenu);
+  });
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 768) closeMenu();
+  }, { passive: true });
+})();
+
 /* ─── Nav scroll state ──────────────────────────────────────── */
 (function initNavScroll() {
   const nav = document.getElementById('main-nav');
@@ -48,6 +84,7 @@
 (function initCursorGlow() {
   // Only on non-touch devices
   if (window.matchMedia('(hover: none)').matches) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
   const glow = document.createElement('div');
   glow.id = 'cursor-glow';
@@ -120,9 +157,18 @@
 
 /* ─── Service & Testimonial cards — stagger reveal ────────── */
 (function initStaggerCards() {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelectorAll('.service-card, .testimonial-card, .case-card').forEach((card) => {
+      card.style.opacity = '1';
+      card.style.transform = 'translateY(0)';
+    });
+    return;
+  }
+
   const serviceCards = document.querySelectorAll('.service-card');
   const testimonialCards = document.querySelectorAll('.testimonial-card');
-  const allCards = [...serviceCards, ...testimonialCards];
+  const caseCards = document.querySelectorAll('.case-card');
+  const allCards = [...serviceCards, ...testimonialCards, ...caseCards];
   
   if (!allCards.length) return;
 
@@ -163,6 +209,8 @@
 
 /* ─── Subtle Parallax for About Mesh ──────────────────────── */
 (function initParallax() {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
   const mesh = document.querySelector('.about__mesh');
   const aboutSection = document.getElementById('about');
   if (!mesh || !aboutSection) return;
@@ -202,97 +250,110 @@ window.loadSpline = async function loadSpline(sceneUrl) {
   const canvas = document.getElementById('spline-bg');
   if (!canvas) {
     console.warn('[Q-Tech] #spline-bg canvas not found.');
+    hideGlobalLoader();
     return;
   }
 
-  const { Application } = await import(
-    'https://unpkg.com/@splinetool/runtime/build/runtime.js'
-  );
+  const loaderTimeout = setTimeout(() => {
+    // Never trap users in preloader if CDN/scene load stalls.
+    hideGlobalLoader();
+  }, 6000);
 
-  const spline = new Application(canvas);
-  await spline.load(sceneUrl);
+  try {
+    const { Application } = await import(
+      'https://unpkg.com/@splinetool/runtime/build/runtime.js'
+    );
 
-  // Remove placeholder glows once Spline is loaded
-  document.querySelectorAll('.hero__glow').forEach((el) => el.remove());
+    const spline = new Application(canvas);
+    await spline.load(sceneUrl);
 
-  // Wait an extra small amount of time for the rendering engine to paint the scene fully 
-  setTimeout(() => {
-    const loader = document.getElementById('global-loader');
-    if (loader) {
-      loader.classList.add('hidden');
-      document.body.classList.remove('loading-locked');
-      setTimeout(() => loader.remove(), 800);
-    }
-  }, 500);
+    clearTimeout(loaderTimeout);
 
-  // Keep canvas sharp on resize
-  const syncSize = () => spline.setSize(canvas.clientWidth, canvas.clientHeight);
-  window.addEventListener('resize', syncSize, { passive: true });
+    // Remove placeholder glows once Spline is loaded
+    document.querySelectorAll('.hero__glow').forEach((el) => el.remove());
 
-  // Pause GPU when tab hidden
-  document.addEventListener('visibilitychange', () => {
-    document.hidden ? spline.setSize(0, 0) : syncSize();
-  });
+    // Wait an extra small amount of time for the rendering engine to paint the scene fully 
+    setTimeout(() => {
+      hideGlobalLoader();
+    }, 500);
 
-  console.log('[Q-Tech] Spline scene loaded ✓');
+    // Keep canvas sharp on resize
+    const syncSize = () => spline.setSize(canvas.clientWidth, canvas.clientHeight);
+    window.addEventListener('resize', syncSize, { passive: true });
 
-  /* ─── Smooth Mouse Follow Integration (per SKILL.md Section 8) ─── */
-  // 1. Find the target object using the official API
-  // In Spline, object names are case-sensitive. Assuming 'Bot' based on the asset.
-  let targetObject = spline.findObjectByName('Bot');
+    // Pause GPU when tab hidden
+    document.addEventListener('visibilitychange', () => {
+      document.hidden ? spline.setSize(0, 0) : syncSize();
+    });
+
+    console.log('[Q-Tech] Spline scene loaded ✓');
+
+    /* ─── Smooth Mouse Follow Integration (per SKILL.md Section 8) ─── */
+    // 1. Find the target object using the official API
+    // In Spline, object names are case-sensitive. Assuming 'Bot' based on the asset.
+    let targetObject = spline.findObjectByName('Bot');
   
-  if (!targetObject) {
-    console.warn('[Q-Tech] Object exactly named "Bot" not found. Falling back to tracking the entire scene.');
-    targetObject = spline._scene; // Fallback so the whole scene moves gracefully
-  }
+    if (!targetObject) {
+      console.warn('[Q-Tech] Object exactly named "Bot" not found. Falling back to tracking the entire scene.');
+      targetObject = spline._scene; // Fallback so the whole scene moves gracefully
+    }
 
   // Shift the model towards the right side of the screen
-  if (targetObject && targetObject.position) {
-    targetObject.position.x += 137; // Decreased from 200 to shift it slightly left
-  }
+    if (targetObject && targetObject.position) {
+      const modelOffsetX = window.innerWidth <= 768 ? 78 : 137;
+      targetObject.position.x += modelOffsetX;
+    }
 
   // 2. Setup mouse tracking and smooth lerping
-  let mouseX = 0;
-  let mouseY = 0;
+    let mouseX = 0;
+    let mouseY = 0;
   
   // Store the initial rotation so we just ADD to it, rather than overwriting it
-  const initialRotX = targetObject.rotation.x || 0;
-  const initialRotY = targetObject.rotation.y || 0;
+    const initialRotX = (targetObject.rotation && targetObject.rotation.x) || 0;
+    const initialRotY = (targetObject.rotation && targetObject.rotation.y) || 0;
   
-  let targetRotX = 0;
-  let targetRotY = 0;
-  let currentRotX = 0;
-  let currentRotY = 0;
+    let targetRotX = 0;
+    let targetRotY = 0;
+    let currentRotX = 0;
+    let currentRotY = 0;
 
-  window.addEventListener('mousemove', (e) => {
-    // Normalize coordinates to a range of -1 to 1
-    const x = (e.clientX / window.innerWidth) * 2 - 1;
-    const y = -(e.clientY / window.innerHeight) * 2 + 1;
-    
-    mouseX = x;
-    mouseY = y;
-  }, { passive: true });
+    window.addEventListener('mousemove', (e) => {
+      // Normalize coordinates to a range of -1 to 1
+      const x = (e.clientX / window.innerWidth) * 2 - 1;
+      const y = -(e.clientY / window.innerHeight) * 2 + 1;
+      
+      mouseX = x;
+      mouseY = y;
+    }, { passive: true });
 
   // 3. Animation loop for buttery smooth movement
-  function renderLoop() {
-    // Adjust these multipliers to control how far the robot rotates
-    targetRotY = mouseX * 0.4; // Look left/right
-    targetRotX = mouseY * 0.2; // Look up/down
+    function renderLoop() {
+      // Adjust these multipliers to control how far the robot rotates
+      targetRotY = mouseX * 0.4; // Look left/right
+      targetRotX = mouseY * 0.2; // Look up/down
 
     // Linear interpolation (lerp) for smooth easing
-    currentRotX += (targetRotX - currentRotX) * 0.05;
-    currentRotY += (targetRotY - currentRotY) * 0.05;
+      currentRotX += (targetRotX - currentRotX) * 0.05;
+      currentRotY += (targetRotY - currentRotY) * 0.05;
 
     // Apply the offset to the robot's initial position
-    targetObject.rotation.x = initialRotX - currentRotX;
-    targetObject.rotation.y = initialRotY + currentRotY;
+      if (targetObject.rotation) {
+        targetObject.rotation.x = initialRotX - currentRotX;
+        targetObject.rotation.y = initialRotY + currentRotY;
+      }
 
-    requestAnimationFrame(renderLoop);
-  }
+      requestAnimationFrame(renderLoop);
+    }
   
-  renderLoop();
+    renderLoop();
 
-  return spline;
+    return spline;
+  } catch (error) {
+    clearTimeout(loaderTimeout);
+    console.warn('[Q-Tech] Spline failed to load, continuing without 3D scene.', error);
+    hideGlobalLoader();
+    return null;
+  }
 };
 
 /* ─── Activate Spline scene ─────────────────────────────────── */
@@ -305,6 +366,12 @@ window.loadSpline('https://prod.spline.design/vgmtZgY66nSQXRGp/scene.splinecode'
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault(); // Prevent full page reload
+
+    const honeypot = form.querySelector('.form-honeypot');
+    if (honeypot && honeypot.value.trim() !== '') {
+      form.reset();
+      return;
+    }
     
     const btn = form.querySelector('button[type="submit"]');
     const originalText = btn.textContent;
