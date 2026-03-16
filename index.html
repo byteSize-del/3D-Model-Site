@@ -7,9 +7,30 @@
   <title>Q-Tech AI-Solutions | Intelligent Automation Agency</title>
   <meta name="description"
     content="Q-Tech AI-Solutions — We build intelligent AI-powered systems, automation pipelines, and custom software that push businesses into the future." />
+  <meta name="robots" content="index,follow" />
+
+  <!-- Canonical + Social -->
+  <link rel="canonical" href="https://q-tech.zya.me/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Q-Tech AI-Solutions" />
+  <meta property="og:title" content="Q-Tech AI-Solutions | Intelligent Automation Agency" />
+  <meta property="og:description"
+    content="We engineer AI systems, workflow automation, and production software that drive measurable business outcomes." />
+  <meta property="og:url" content="https://q-tech.zya.me/" />
+  <meta property="og:image" content="https://q-tech.zya.me/og-image.svg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Q-Tech AI-Solutions | Intelligent Automation Agency" />
+  <meta name="twitter:description"
+    content="AI systems and automation engineered for impact. Book a free AI audit." />
+  <meta name="twitter:image" content="https://q-tech.zya.me/og-image.svg" />
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+
+  <!-- Performance Preconnects -->
+  <link rel="preconnect" href="https://unpkg.com" crossorigin />
+  <link rel="preconnect" href="https://prod.spline.design" crossorigin />
+  <link rel="preconnect" href="https://formspree.io" crossorigin />
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -42,15 +63,30 @@
     </div>
 
     <ul class="nav__links" role="list">
-      <li><a href="#hero"         class="nav__link" id="nav-home">Home</a></li>
+      <li><a href="#hero" class="nav__link" id="nav-home">Home</a></li>
+      <li><a href="#services" class="nav__link" id="nav-services">Services</a></li>
+      <li><a href="#case-studies" class="nav__link" id="nav-cases">Case Studies</a></li>
       <li><a href="#testimonials" class="nav__link" id="nav-testimonials">Testimonials</a></li>
-      <li><a href="#contact"      class="nav__link" id="nav-contact">Contact</a></li>
+      <li><a href="#contact" class="nav__link" id="nav-contact">Contact</a></li>
     </ul>
 
+    <button class="nav__menu-toggle" id="nav-menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+
     <a href="#contact" class="nav__cta" id="nav-hire-btn">
-      Get Started
+      Book Free AI Audit
     </a>
   </nav>
+
+  <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+    <a href="#hero" class="mobile-menu__link">Home</a>
+    <a href="#services" class="mobile-menu__link">Services</a>
+    <a href="#case-studies" class="mobile-menu__link">Case Studies</a>
+    <a href="#testimonials" class="mobile-menu__link">Testimonials</a>
+    <a href="#contact" class="mobile-menu__link">Contact</a>
+    <a href="#contact" class="mobile-menu__cta">Book Free AI Audit</a>
+  </div>
 
   <!-- ═══════════════════════════════════════════════
        HERO SECTION
@@ -63,6 +99,9 @@
 
     <!-- ══ SPLINE 3D BACKGROUND ══════════════════════════════ -->
     <canvas id="spline-bg" aria-hidden="true"></canvas>
+
+    <!-- Intentional visual zone for Spline watermark -->
+    <div class="hero__watermark-zone" aria-hidden="true"></div>
 
     <!-- Noise / grain overlay for texture depth -->
     <div class="hero__grain" aria-hidden="true"></div>
@@ -95,6 +134,12 @@
         </p>
       </div>
 
+      <div class="hero__actions" id="hero-actions">
+        <a href="#contact" class="btn-primary">Book Free AI Audit</a>
+        <a href="#case-studies" class="btn-secondary">See Case Studies</a>
+        <p class="hero__trust-line">Replies in 24h | NDA-friendly | Outcome-focused delivery</p>
+      </div>
+
     </div><!-- /.hero__wrap -->
 
     <!-- Bottom trusted section -->
@@ -106,41 +151,60 @@
 
         <div class="logo-pill" id="logo-1">
           <div class="logo-pill__icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg>
+            <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none">
+              <path
+                d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
+              </path>
+            </svg>
           </div>
           <span class="logo-pill__name">NexaCore</span>
         </div>
 
         <div class="logo-pill" id="logo-2">
           <div class="logo-pill__icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none"><polygon points="12 2 2 22 22 22"></polygon></svg>
+            <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none">
+              <polygon points="12 2 2 22 22 22"></polygon>
+            </svg>
           </div>
           <span class="logo-pill__name">Axiom Labs</span>
         </div>
 
         <div class="logo-pill" id="logo-3">
           <div class="logo-pill__icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+            <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none">
+              <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+            </svg>
           </div>
           <span class="logo-pill__name">Prism AI</span>
         </div>
 
         <div class="logo-pill" id="logo-4">
           <div class="logo-pill__icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+            <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none">
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+            </svg>
           </div>
           <span class="logo-pill__name">VortexTech</span>
         </div>
 
         <div class="logo-pill" id="logo-5">
           <div class="logo-pill__icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path><path d="M2 12h20"></path></svg>
+            <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none">
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
+              </path>
+              <path d="M2 12h20"></path>
+            </svg>
           </div>
           <span class="logo-pill__name">Orbis Digital</span>
         </div>
 
       </div><!-- /.hero__logos -->
     </div><!-- /#hero-trusted -->
+
+    <p class="hero__spline-credit" aria-hidden="true">
+      3D experience powered by Spline
+    </p>
 
   </section><!-- /#hero -->
 
@@ -191,6 +255,41 @@
   </section>
 
   <!-- ═══════════════════════════════════════════════
+       PROCESS + TRUST LAYER
+  ════════════════════════════════════════════════ -->
+  <section class="process reveal" id="process" aria-label="Process and trust">
+    <div class="process__header">
+      <span class="section-label">// DELIVERY SYSTEM</span>
+      <h2 class="section-title">HOW WE EXECUTE</h2>
+    </div>
+
+    <div class="process__grid" role="list">
+      <article class="process-step" role="listitem">
+        <span class="process-step__index">01</span>
+        <h3>Discovery Sprint</h3>
+        <p>We map your current flow, identify bottlenecks, and prioritize high-impact automation opportunities.</p>
+      </article>
+      <article class="process-step" role="listitem">
+        <span class="process-step__index">02</span>
+        <h3>Architecture + Build</h3>
+        <p>We implement your AI pipeline with robust APIs, monitoring, and production-grade error handling.</p>
+      </article>
+      <article class="process-step" role="listitem">
+        <span class="process-step__index">03</span>
+        <h3>Deploy + Optimize</h3>
+        <p>We launch, track KPIs, and iterate quickly until operational efficiency and business outcomes are locked in.</p>
+      </article>
+    </div>
+
+    <div class="trust-badges" aria-label="Trust badges">
+      <span class="trust-badge">NDA Friendly</span>
+      <span class="trust-badge">Secure Build Standards</span>
+      <span class="trust-badge">Rapid Delivery Cycles</span>
+      <span class="trust-badge">Dedicated Technical Partner</span>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
        ABOUT / WHY US
   ════════════════════════════════════════════════ -->
   <section class="about reveal" id="about" aria-label="About Q-Tech">
@@ -199,17 +298,19 @@
         <!-- We'll add a subtle CSS grid/glow mesh here in CSS -->
         <div class="about__mesh" aria-hidden="true"></div>
       </div>
-      
+
       <div class="about__content">
         <span class="section-label">// THE Q-TECH ADVANTAGE</span>
         <h2 class="section-title">ENGINEERED FOR<br>THE NEXT ERA</h2>
         <p class="section-desc">
-          We don't just prompt APIs. We architect custom neural networks, build resilient data pipelines, and deploy sovereign software that gives your business an unfair advantage. 
+          We don't just prompt APIs. We architect custom neural networks, build resilient data pipelines, and deploy
+          sovereign software that gives your business an unfair advantage.
         </p>
         <p class="section-desc">
-          As an elite freelance agency, we integrate directly into your workflow, cutting overhead while delivering enterprise-grade AI tooling at startup speed.
+          As an elite freelance agency, we integrate directly into your workflow, cutting overhead while delivering
+          enterprise-grade AI tooling at startup speed.
         </p>
-        
+
         <ul class="about__list" role="list">
           <li><strong>01.</strong> Custom AI Models — Fine-tuned natively for your proprietary datasets.</li>
           <li><strong>02.</strong> System Agnostic — Seamless integrations with your existing tech stack.</li>
@@ -220,43 +321,70 @@
   </section>
 
   <!-- ═══════════════════════════════════════════════
-       TECH STACK MARQUEE
+       TECH STACK GRID
   ════════════════════════════════════════════════ -->
-  <section class="marquee" aria-label="Technology Stack" aria-hidden="true">
-    <div class="marquee__track">
-      <!-- Group 1 -->
-      <div class="marquee__group">
-        <span>Python</span><span class="marquee__dot">✦</span>
-        <span>TensorFlow</span><span class="marquee__dot">✦</span>
-        <span>PyTorch</span><span class="marquee__dot">✦</span>
-        <span>OpenAI</span><span class="marquee__dot">✦</span>
-        <span>Next.js</span><span class="marquee__dot">✦</span>
-        <span>AWS</span><span class="marquee__dot">✦</span>
-        <span>PostgreSQL</span><span class="marquee__dot">✦</span>
-        <span>CUDA</span><span class="marquee__dot">✦</span>
-      </div>
-      <!-- Group 2 (Duplicate for seamless loop) -->
-      <div class="marquee__group">
-        <span>Python</span><span class="marquee__dot">✦</span>
-        <span>TensorFlow</span><span class="marquee__dot">✦</span>
-        <span>PyTorch</span><span class="marquee__dot">✦</span>
-        <span>OpenAI</span><span class="marquee__dot">✦</span>
-        <span>Next.js</span><span class="marquee__dot">✦</span>
-        <span>AWS</span><span class="marquee__dot">✦</span>
-        <span>PostgreSQL</span><span class="marquee__dot">✦</span>
-        <span>CUDA</span><span class="marquee__dot">✦</span>
-      </div>
-      <!-- Group 3 (Duplicate for ultrawide screens) -->
-      <div class="marquee__group">
-        <span>Python</span><span class="marquee__dot">✦</span>
-        <span>TensorFlow</span><span class="marquee__dot">✦</span>
-        <span>PyTorch</span><span class="marquee__dot">✦</span>
-        <span>OpenAI</span><span class="marquee__dot">✦</span>
-        <span>Next.js</span><span class="marquee__dot">✦</span>
-        <span>AWS</span><span class="marquee__dot">✦</span>
-        <span>PostgreSQL</span><span class="marquee__dot">✦</span>
-        <span>CUDA</span><span class="marquee__dot">✦</span>
-      </div>
+  <section class="tech-stack" aria-label="Technology Stack">
+    <div class="tech-stack__header">
+      <span class="section-label">// TRUSTED PARTNERS</span>
+      <h2 class="section-title">Trusted by Industry Leaders</h2>
+    </div>
+
+    <div class="tech-stack__grid" role="list">
+        <article class="tech-item" role="listitem">
+        <div class="tech-item__logo" aria-hidden="true">
+          <img src="google.png" alt="Google logo" loading="lazy" decoding="async">
+        </div>
+        <span>GOOGLE</span>
+      </article>
+
+      <article class="tech-item" role="listitem">
+        <div class="tech-item__logo" aria-hidden="true">
+          <img src="n8n-color.png" alt="n8n logo" loading="lazy" decoding="async">
+        </div>
+        <span>n8n</span>
+      </article>
+
+      <article class="tech-item" role="listitem">
+        <div class="tech-item__logo" aria-hidden="true">
+          <img src="blackbox.png" alt="Blackbox logo" loading="lazy" decoding="async">
+        </div>
+        <span>BLACK BOX</span>
+      </article>
+
+      <article class="tech-item" role="listitem">
+        <div class="tech-item__logo" aria-hidden="true">
+          <img src="openai.png" alt="OpenAI logo" loading="lazy" decoding="async">
+        </div>
+        <span>OpenAI</span>
+      </article>
+
+      <article class="tech-item" role="listitem">
+        <div class="tech-item__logo" aria-hidden="true">
+          <img src="meta-color.png" alt="Meta logo" loading="lazy" decoding="async">
+        </div>
+        <span>META</span>
+      </article>
+
+      <article class="tech-item" role="listitem">
+        <div class="tech-item__logo" aria-hidden="true">
+          <img src="githubcopilot.png" alt="GitHub Copilot logo" loading="lazy" decoding="async">
+        </div>
+        <span>COPILOT</span>
+      </article>
+
+      <article class="tech-item" role="listitem">
+        <div class="tech-item__logo" aria-hidden="true">
+          <img src="nvidia-color.png" alt="NVIDIA logo" loading="lazy" decoding="async">
+        </div>
+        <span>NVIDIA</span>
+      </article>
+
+      <article class="tech-item" role="listitem">
+        <div class="tech-item__logo" aria-hidden="true">
+          <img src="claude-color.png" alt="Claude logo" loading="lazy" decoding="async">
+        </div>
+        <span>Claude</span>
+      </article>
     </div>
   </section>
 
@@ -270,10 +398,11 @@
     </div>
 
     <div class="testimonials__grid" role="list">
-      
+
       <article class="testimonial-card reveal" role="listitem">
         <div class="testimonial-card__quote">
-          "Q-Tech completely overhauled our logistics routing. Their custom ML model cut our fleet delivery times by 22% in the first quarter alone. Absolutely crucial partnership."
+          "Q-Tech completely overhauled our logistics routing. Their custom ML model cut our fleet delivery times by 22%
+          in the first quarter alone. Absolutely crucial partnership."
         </div>
         <div class="testimonial-card__author">
           <div class="testimonial-card__avatar" aria-hidden="true">E</div>
@@ -286,7 +415,8 @@
 
       <article class="testimonial-card reveal" role="listitem" style="transition-delay: 0.1s;">
         <div class="testimonial-card__quote">
-          "The speed of execution is unmatched. We needed a proprietary NLP scraper built from scratch to analyze financial documents. Delivered, deployed, and scaling perfectly."
+          "The speed of execution is unmatched. We needed a proprietary NLP scraper built from scratch to analyze
+          financial documents. Delivered, deployed, and scaling perfectly."
         </div>
         <div class="testimonial-card__author">
           <div class="testimonial-card__avatar" aria-hidden="true">M</div>
@@ -299,7 +429,8 @@
 
       <article class="testimonial-card reveal" role="listitem" style="transition-delay: 0.2s;">
         <div class="testimonial-card__quote">
-          "It feels less like hiring an agency and more like plugging an elite engineering task force directly into our startup. Our AI infrastructure is lightyears ahead."
+          "It feels less like hiring an agency and more like plugging an elite engineering task force directly into our
+          startup. Our AI infrastructure is lightyears ahead."
         </div>
         <div class="testimonial-card__author">
           <div class="testimonial-card__avatar" aria-hidden="true">S</div>
@@ -314,21 +445,65 @@
   </section>
 
   <!-- ═══════════════════════════════════════════════
+       CASE STUDIES
+  ════════════════════════════════════════════════ -->
+  <section class="case-studies" id="case-studies" aria-label="Case studies">
+    <div class="case-studies__header reveal">
+      <span class="section-label">// MEASURED RESULTS</span>
+      <h2 class="section-title">REAL BUSINESS IMPACT</h2>
+    </div>
+
+    <div class="case-studies__grid" role="list">
+      <article class="case-card reveal" role="listitem">
+        <p class="case-card__type">Logistics Intelligence</p>
+        <h3>Route Optimization Engine</h3>
+        <p class="case-card__copy">Built an ML route-ranking system integrated into dispatch workflows for dynamic decisioning.</p>
+        <div class="case-card__metrics">
+          <span>-22% delivery time</span>
+          <span>+31% planning speed</span>
+        </div>
+      </article>
+
+      <article class="case-card reveal" role="listitem">
+        <p class="case-card__type">Financial Automation</p>
+        <h3>Document Intelligence Pipeline</h3>
+        <p class="case-card__copy">Deployed a custom NLP extraction pipeline for reports and regulatory summaries.</p>
+        <div class="case-card__metrics">
+          <span>-64% manual review time</span>
+          <span>+4x document throughput</span>
+        </div>
+      </article>
+
+      <article class="case-card reveal" role="listitem">
+        <p class="case-card__type">Startup Ops</p>
+        <h3>AI Support + CRM Flows</h3>
+        <p class="case-card__copy">Connected AI triage bots with CRM automations, reducing response delays and lead drop-off.</p>
+        <div class="case-card__metrics">
+          <span>-38% response latency</span>
+          <span>+27% qualified leads</span>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
        CONTACT / CTA
   ════════════════════════════════════════════════ -->
   <section class="contact" id="contact" aria-label="Contact Section">
     <!-- Atmospheric deep glow -->
     <div class="contact__glow" aria-hidden="true"></div>
-    
+
     <div class="contact__grid reveal">
-      
+
       <div class="contact__info">
         <span class="section-label" style="text-align: left;">// INITIATE SEQUENCE</span>
-        <h2 class="contact__title" style="text-align: left; font-size: clamp(2.5rem, 4vw, 4rem);">READY TO BUILD<br>THE FUTURE?</h2>
+        <h2 class="contact__title" style="text-align: left; font-size: clamp(2.5rem, 4vw, 4rem);">READY TO BUILD<br>THE
+          FUTURE?</h2>
         <p class="contact__desc" style="text-align: left;">
-          Stop relying on off-the-shelf tools. Let's engineer a bespoke AI solution that scales your operations exponentially.
+          Stop relying on off-the-shelf tools. Let's engineer a bespoke AI solution that scales your operations
+          exponentially.
         </p>
-        
+
         <div class="contact__direct">
           <p class="contact__direct-label">Direct Line</p>
           <a href="mailto:sahil.dev.me@gmail.com" class="contact__direct-email">sahil.dev.me@gmail.com</a>
@@ -337,6 +512,8 @@
 
       <div class="contact__form-wrapper">
         <form action="https://formspree.io/f/xlgwvrlq" method="POST" class="contact__form">
+          <input type="text" name="company_website" class="form-honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
+
           <div class="form-group">
             <label for="name">Name</label>
             <input type="text" id="name" name="name" required placeholder="John Doe">
@@ -345,9 +522,46 @@
             <label for="email">Email</label>
             <input type="email" id="email" name="email" required placeholder="john@company.com">
           </div>
+
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="project-type">Project Type</label>
+              <select id="project-type" name="project_type" required>
+                <option value="" selected disabled>Select type</option>
+                <option value="ai-system">AI System Build</option>
+                <option value="workflow-automation">Workflow Automation</option>
+                <option value="custom-software">Custom Software</option>
+                <option value="advisory">Web Development</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="timeline">Timeline</label>
+              <select id="timeline" name="timeline" required>
+                <option value="" selected disabled>Select timeline</option>
+                <option value="asap">ASAP (0-2 weeks)</option>
+                <option value="month">Within 1 month</option>
+                <option value="quarter">This quarter</option>
+                <option value="exploring">Just exploring</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="budget">Estimated Budget</label>
+            <select id="budget" name="budget" required>
+              <option value="" selected disabled>Select budget range</option>
+              <option value="under-2k">Under &#8377;2k</option>
+              <option value="2k-5k">&#8377;2k - &#8377;5k</option>
+              <option value="5k-15k">&#8377;5k - &#8377;15k</option>
+              <option value="15k-plus">&#8377;15k+</option>
+            </select>
+          </div>
+
           <div class="form-group">
             <label for="message">Project Details</label>
-            <textarea id="message" name="message" rows="4" required placeholder="Tell us about the problem you're trying to solve..."></textarea>
+            <textarea id="message" name="message" rows="4" required
+              placeholder="Tell us about the problem you're trying to solve..."></textarea>
           </div>
           <button type="submit" class="btn-primary" style="width: 100%;">Submit Inquiry</button>
         </form>
@@ -366,13 +580,15 @@
         <span class="nav__brand-name">Q-TECH</span>
         <p class="footer__tagline">Intelligent Automation Agency</p>
       </div>
-      
+
       <div class="footer__links">
         <div class="footer__col">
           <h4 class="footer__col-title">Navigation</h4>
           <ul>
             <li><a href="#hero">Home</a></li>
             <li><a href="#services">Services</a></li>
+            <li><a href="#process">Process</a></li>
+            <li><a href="#case-studies">Case Studies</a></li>
             <li><a href="#about">The Advantage</a></li>
             <li><a href="#testimonials">Clients</a></li>
           </ul>
@@ -387,12 +603,14 @@
         </div>
       </div>
     </div>
-    
+
     <div class="footer__bottom">
-      <p>&copy; <script>document.write(new Date().getFullYear())</script> Q-Tech AI-Solutions. All sovereign rights reserved.</p>
+      <p>&copy;
+        <script>document.write(new Date().getFullYear())</script> Q-Tech AI-Solutions. All sovereign rights reserved.
+      </p>
       <div class="footer__legal">
-        <a href="#">Privacy Policy</a>
-        <a href="#">Terms of Service</a>
+        <a href="legal.html">Privacy Policy</a>
+        <a href="legal.html">Terms of Service</a>
       </div>
     </div>
   </footer>
@@ -427,6 +645,7 @@
   -->
 
   <script src="main.js"></script>
+  <a href="#contact" class="mobile-sticky-cta" aria-label="Book a free AI audit">Book Free AI Audit</a>
 </body>
 
 </html>
