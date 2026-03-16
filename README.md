@@ -1,98 +1,86 @@
 # ◆ Q-Tech AI-Solutions
 
-A modern, responsive portfolio website for an AI-driven freelance agency — featuring an interactive 3D hero model, smooth scroll animations, and a dark-themed design system.
+A modern, responsive single-page agency website focused on AI services, automation, and custom software delivery.
 
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)
 ![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)
 
-## ✨ Features
+## Overview
 
-- **Interactive 3D Hero** — Spline-powered robot model that tracks cursor movement in real time
-- **Scroll Animations** — Intersection Observer-driven fade-up reveals and staggered card entrances
-- **Cursor Glow** — Smooth magnetic glow effect that follows the mouse on desktop
-- **Contact Form** — Async form submission via Formspree with loading and success states
-- **Responsive Design** — Fluid typography with `clamp()` and layouts that adapt from mobile to desktop
-- **Parallax Effects** — Subtle depth shifts on the about-section mesh element
-- **Performance Optimized** — Spline canvas pauses rendering when the tab is hidden
+This project is a zero-dependency static website built with:
+- **`index.html`** for semantic page structure and content sections
+- **`style.css`** for the dark visual system, responsive layout, and animations
+- **`main.js`** for interactivity (navigation behavior, reveals, cursor glow, form handling, and motion effects)
 
-## 🛠 Tech Stack
+## Project Files
 
-| Layer | Technology |
-|-------|-----------|
-| Markup | HTML5 (semantic, accessible) |
-| Styling | CSS3 (custom properties, flexbox, grid) |
-| Scripting | Vanilla JavaScript (no frameworks) |
-| 3D | [Spline](https://spline.design/) runtime via CDN |
-| Forms | [Formspree](https://formspree.io/) |
-| Fonts | Google Fonts — Barlow Condensed & Inter |
-
-## 📁 Project Structure
-
-```
+```text
 3D-Model-Site/
-├── index.html      # Main page markup
-├── style.css       # Design system and responsive styles
-├── main.js         # Interactions, 3D setup, and form handling
-├── favicon.svg     # Brand mark icon
-├── LICENSE         # MIT License
-└── README.md       # You are here
+├── index.html        # Main page markup and section content
+├── style.css         # Full visual styling and responsive behavior
+├── main.js           # Client-side interactions and effects
+├── favicon.svg       # Browser tab icon
+├── *.png             # Brand/tech logo image assets
+├── LICENSE           # MIT license
+└── README.md         # Project documentation
 ```
 
-## 🚀 Getting Started
+## HTML Structure (`index.html`)
 
-This is a **zero-dependency static site** — no build tools or package managers required.
+The page is organized into clearly separated sections:
+- Global loader and top navigation
+- Hero section with 3D canvas slot and CTA actions
+- Services, case studies, and testimonials
+- About and technology highlights
+- Contact section with form integration
+- Footer
 
-### Option 1 — Open directly
+The document includes:
+- SEO metadata (`title`, `description`, canonical URL)
+- Open Graph and Twitter card tags
+- Accessible navigation/menu attributes (`aria-*`)
+
+## Styling (`style.css`)
+
+The stylesheet provides:
+- Dark-themed design tokens via CSS custom properties
+- Typography using **Barlow Condensed** and **Inter**
+- Responsive breakpoints for mobile/tablet/desktop
+- UI animation layers (cards, reveals, glow, transitions)
+- Section-level layout consistency for presentation and readability
+
+## Interactions (`main.js`)
+
+JavaScript currently powers:
+- Preloader hide logic
+- Mobile menu open/close state
+- Sticky nav style change on scroll
+- Intersection Observer reveal animations
+- Active navigation link tracking by visible section
+- Cursor glow effect for non-touch devices
+- Staggered card animations and parallax behavior
+
+## Run Locally
+
+No build step is required.
 
 ```bash
+# Option 1: open directly
 open index.html
-```
 
-### Option 2 — Local server
-
-```bash
-# Python
+# Option 2: run a local server
 python3 -m http.server 8000
-
-# Node.js
-npx http-server
-
-# Then visit http://localhost:8000
+# then visit http://localhost:8000
 ```
 
-## 🎨 Design System
+## Notes
 
-The site uses CSS custom properties for a consistent dark theme:
+- This repository does not include a package manager or automated test/lint setup.
+- Keep updates focused on `index.html`, `style.css`, and `main.js` to preserve the current lightweight architecture.
 
-| Token | Value | Usage |
-|-------|-------|-------|
-| `--c-bg` | `#050508` | Page background |
-| `--c-surface` | `#08090f` | Card / section surfaces |
-| `--c-text` | `#e8eaf0` | Primary text |
-| `--c-text-muted` | `#b0b5c8` | Secondary text |
-| `--c-accent` | `#4a7fd4` | CTAs and highlights |
-
-## 📄 Sections
-
-| Section | Description |
-|---------|-------------|
-| **Hero** | 3D robot model, headline, social-proof client pills |
-| **Services** | Four animated cards for AI/ML, Automation, Software Dev, and Data & Analytics |
-| **About** | Value proposition with parallax mesh and three key advantages |
-| **Tech Marquee** | Scrolling ticker of technologies (Python, TensorFlow, AWS, etc.) |
-| **Testimonials** | Three client review cards with author details |
-| **Contact** | Two-column layout with an async form and email CTA |
-
-## ♿ Accessibility
-
-- Semantic HTML landmarks (`<nav>`, `<section>`, `<article>`)
-- ARIA labels and roles on interactive elements
-- Properly associated form labels
-- Meets WCAG color-contrast guidelines
-
-## 📝 License
+## License
 
 This project is licensed under the [MIT License](LICENSE).
 
