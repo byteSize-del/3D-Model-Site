@@ -83,3 +83,5 @@ python3 -m http.server 8000
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
+
+© 2026 Sahil Sayyed
